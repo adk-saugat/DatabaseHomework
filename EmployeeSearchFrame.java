@@ -20,6 +20,7 @@
  import java.awt.event.ActionEvent;
  import javax.swing.JScrollPane;
  import javax.swing.JTextArea;
+ import java.sql.*;
  
  public class EmployeeSearchFrame extends JFrame {
  
@@ -40,6 +41,9 @@
                  try {
                      EmployeeSearchFrame frame = new EmployeeSearchFrame();
                      frame.setVisible(true);
+                     DatabaseConfig configDb = new DatabaseConfig();
+                     Connection connection = configDb.connectDatabase();
+                     
                  } catch (Exception e) {
                      e.printStackTrace();
                  }
