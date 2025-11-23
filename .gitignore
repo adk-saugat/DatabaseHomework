@@ -1,1 +1,4 @@
 *.prop
+*.yml
+*.sql
+*.class
