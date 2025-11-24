@@ -150,7 +150,33 @@ import javax.swing.JTextArea;
         JButton btnSearch = new JButton("Search");
         btnSearch.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                textAreaEmployee.setText("John Smith\nFranklin Wong");
+                if (conn == null) {
+                    textAreaEmployee.setText("Error: No database connection. Please check your connection.");
+                    return;
+                }
+                
+                // Get selected departments
+                java.util.List<String> selectedDeptList = lstDepartment.getSelectedValuesList();
+                String[] selectedDepartments = selectedDeptList.toArray(new String[0]);
+                
+                // Get selected projects
+                java.util.List<String> selectedProjList = lstProject.getSelectedValuesList();
+                String[] selectedProjects = selectedProjList.toArray(new String[0]);
+                
+                // Get checkbox states
+                boolean notDept = chckbxNotDept.isSelected();
+                boolean notProject = chckbxNotProject.isSelected();
+                
+                // Perform search
+                DatabaseQueries queries = new DatabaseQueries(conn);
+                String[] employees = queries.SearchEmployees(selectedDepartments, selectedProjects, notDept, notProject);
+                
+                // Display results
+                StringBuilder resultText = new StringBuilder();
+                for (String employee : employees) {
+                    resultText.append(employee).append("\n");
+                }
+                textAreaEmployee.setText(resultText.toString());
             }
         });
          btnSearch.setBounds(80, 276, 89, 23);
