@@ -3,7 +3,7 @@
  * Description: This is the framework for the database program. Additional requirements and functionality
  *    are to be built by you and your group.
  * 
- * Group Members: [Add your group members' names here]
+ * Group Members: [Add your group members' names here
  */
 // checking github
  import java.awt.EventQueue;
