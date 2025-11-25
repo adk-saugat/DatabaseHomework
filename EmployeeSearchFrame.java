@@ -253,6 +253,14 @@
         btnClear.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 textAreaEmployee.setText("");
+                txtDatabase.setText("");
+                department.clear();
+                project.clear();
+                lstDepartment.clearSelection();
+                lstProject.clearSelection();
+                chckbxNotDept.setSelected(false);
+                chckbxNotProject.setSelected(false);
+                listFilled = false;
             }
         });
          btnClear.setBounds(236, 276, 89, 23);
